@@ -20,7 +20,8 @@ DUX-Hunt avoids the problem by looking only at the *CIC* locus. Any mate that la
 2. **Discordant pairs.** Count reads whose mate maps to 4q35 (chr4 ≥ 190.9 Mb), 10q26 (chr10 ≥ 135.4 Mb) or `chrUn_gl000228`. Only pairs clustered within ±500 bp are counted, and identical sequences are counted once.
 3. **Split reads.** Soft clips of at least 15 bp are aligned with `bwa mem` to the bundled canonical *DUX4* mini-reference (`chrUn_gl000228:111,467-125,289`, 13.8 kb). A clip is kept only when **both** junction sides agree within ±10 bp of the modal breakpoint. This double-concordance filter removes capture-panel ligation artifacts.
 4. **Short-clip rescue.** Clips of 5–14 bp are counted when they exactly match the reconstructed junction sequence, but only once at least 3 concordant long clips have confirmed that junction.
-5. **Call.** A sample is **POSITIVE** when it has **≥ 10 supporting reads (discordant pairs + split reads), including ≥ 2 split reads**. The output also reports the *CIC* and *DUX4* breakpoints.
+5. **Call.** A sample is **POSITIVE** when it has **≥ 10 supporting reads (discordant pairs + split reads), including ≥ 2 split reads**. The output also reports the *CIC* and *DUX4* breakpoints. These thresholds were established on UCSF500, the UCSF in-house targeted next-generation sequencing cancer panel. Other panels can differ in bait design, coverage depth and read length, so we recommend revalidating the thresholds on known positive and negative cases before using DUX-Hunt on other assays. All three call thresholds can be set on the command line: --min-total (supporting reads, default 10), --min-split (split reads, default 2) and --min-disc (discordant pairs, default 0).
+
 
 The split-read requirement matters. In our validation, every confirmed positive had at least 2 split reads, while the two calls with ≤ 1 split read were negative on clinical review.
 
@@ -67,7 +68,7 @@ One row per BAM, tab-separated:
 
 ## Validation
 
-We applied DUX-Hunt retrospectively to 27,185 BAMs from a 500-gene targeted DNA panel, covering 23,296 unique patients. It detected *CIC::DUX4* in 10 patients; positive calls had 12–799 supporting reads. On clinical review, both cases that had ≤ 1 split read were negative. Among all other patients, no one had more than 9 supporting reads. Every *CIC* breakpoint fell within a 215-bp window and every *DUX4* breakpoint within a 699-bp segment of the canonical unit.
+We applied DUX-Hunt retrospectively to 27,185 BAMs from a 500-gene targeted DNA panel, covering 23,296 unique patients. It detected *CIC::DUX4* in 10 patients; positive calls had 12–799 supporting reads. On clinical review, both cases with at least 10 and 11 total supporting reads that had ≤ 1 split read were negative. Among all other patients, no one had more than 9 total supporting reads. Every *CIC* breakpoint fell within a 215-bp window and every *DUX4* breakpoint within a 699-bp segment of the canonical unit.
 
 ## Limitations
 
