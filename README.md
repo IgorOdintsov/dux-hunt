@@ -90,6 +90,10 @@ The tests build small synthetic BAMs (no patient data) and run the full pipeline
 
 Siegmund SE, Sirohi D, Mirchia K, Van Ziffle J, Devine WP, Odintsov I. *DUX-Hunt: Rapid CIC::DUX4 Fusion Detection from DNA Sequencing Using Canonical DUX4 Mini-Reference Realignment.* Association for Molecular Pathology (AMP) Annual Meeting, 2026.
 
+## Acknowledgments
+
+The code, tests and documentation were developed with the assistance of [Claude Code](https://claude.com/claude-code), Anthropic's AI coding tool. All algorithm design decisions, call thresholds and validation results were reviewed by the authors.
+
 ## License
 
 [MIT](LICENSE)
