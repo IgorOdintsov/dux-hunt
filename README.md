@@ -33,9 +33,7 @@ DUX-Hunt needs Python ≥ 3.9 and [`bwa`](https://github.com/lh3/bwa) on your `P
 mamba install -c bioconda bwa
 
 # DUX-Hunt
-git clone <this repository's URL>
-cd dux-hunt
-pip install .
+pip install git+https://github.com/IgorOdintsov/dux-hunt.git
 ```
 
 The *DUX4* mini-reference and its BWA index are bundled with the package, so no reference genome download is needed.

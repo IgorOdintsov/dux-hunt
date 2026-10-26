@@ -30,3 +30,6 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 dux_hunt = ["data/*"]
+
+[project.urls]
+Homepage = "https://github.com/IgorOdintsov/dux-hunt"
